@@ -18,18 +18,19 @@
             xhr.onload = e => {
                 if (xhr.status === 200) {
                     config.sucesso(xhr.response)
-                } else if (xhr.status >= 100) {
+                } else if (xhr.status >= 400) {
                     config.erro({
                         codigo: xhr.status,
                         texto: xhr.statusText
                     })
                 }
             }
+            
             xhr.send()
         }
 
         function criarTabela(estados) {
-            const linhas = stados.map(estado => {
+            const linhas = estados.map(estado => {
                 const tdId = document.createElement('td')
                 tdId.innerHTML = estado.id
 
